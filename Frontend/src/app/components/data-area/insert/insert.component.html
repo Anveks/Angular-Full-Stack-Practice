@@ -1,1 +1,12 @@
-<p>insert works!</p>
+<h3>Add new game:</h3>
+
+  <form (ngSubmit)="handleSubmit()">
+
+  <input type="text" name="name" placeholder="name" [(ngModel)]="game.name">
+  <input type="text" name="description" placeholder="description" [(ngModel)]="game.description">
+  <input type="date" name="releaseDate" placeholder="release date" [(ngModel)]="game.releaseDate">
+  <input type="number" name="price" placeholder="price" [(ngModel)]="game.price">
+
+  <button>Submit</button>
+
+</form>

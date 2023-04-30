@@ -16,13 +16,18 @@ async function getAllGames(): Promise<GameModel[]> {
 }
 
 async function getGamesByGenres(genreId: number): Promise<GameModel[]>{
-    const sql = `SELECT * FROM videogames WHERE genreId = ?`
+    // if the client passes 0 as an id then show all games
+    let sql: any;
+    genreId !== 0 
+        ?  sql = `SELECT * FROM videogames WHERE genreId = ?` 
+        :  sql = `SELECT * FROM videogames`
+   
     const result = await dal.execute(sql, [genreId]);
     return result;
 }
 
 async function addGame(game: GameModel): Promise<GameModel> {
-    const sql = `INSERT INTO videogames VALUES(?,?,?,?,?)`;
+    const sql = `INSERT INTO videogames VALUES(?,?,?,?)`;
     const result: OkPacket = await dal.execute(sql, [
         game.gameId, 
         game.description, 

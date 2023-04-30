@@ -1,1 +1,13 @@
-<p>list works!</p>
+<div class="list">
+  <label for="">Please select a genre:</label>
+  <select #genre (change)="handleChange(+genre.value)">
+    <option disabled selected>Choose an option</option>
+    <option default value="0">All Games</option>
+    <option *ngFor="let g of genres" [value]="g.genreId"> {{g.genreName}} </option>
+  </select>
+
+  <div class="table">
+  <app-games-table *ngFor="let g of games" [game]="g"></app-games-table>
+  </div>
+
+</div>

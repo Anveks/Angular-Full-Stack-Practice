@@ -9,6 +9,8 @@ import { HomeComponent } from './components/home-area/home/home.component';
 import { ListComponent } from './components/data-area/list/list.component';
 import { InsertComponent } from './components/data-area/insert/insert.component';
 import { PageNotFoundComponent } from './components/layout-area/page-not-found/page-not-found.component';
+import { GamesTableComponent } from './list/games-table/games-table.component';
+import { GameCardComponent } from './list/game-card/game-card.component';
 
 @NgModule({
     declarations: [
@@ -17,7 +19,9 @@ import { PageNotFoundComponent } from './components/layout-area/page-not-found/p
         HomeComponent,
         ListComponent,
         InsertComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        GamesTableComponent,
+        GameCardComponent
     ],
     imports: [
         BrowserModule,
