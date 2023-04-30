@@ -1,7 +1,8 @@
 export class GameModel {
   public gameId: number;
-  public name: string;
+  public genreId: number;
   public description: string;
-  public releaseDate: Date;
+  public releaseDate: string;
   public price: number;
+  public name: string;
 }

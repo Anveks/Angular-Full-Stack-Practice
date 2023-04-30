@@ -27,13 +27,18 @@ export class DataService {
     public async addGame(game: GameModel): Promise<void>{
         // using formData to create an object:
         const formData = new FormData();
+        console.log(game);
+        
+        formData.append("genreId", game.genreId.toString());
         formData.append("description", game.description);
-        formData.append("releaseDate", game.releaseDate.toString());
+        formData.append("releaseDate", game.releaseDate);
         formData.append("price", game.price.toString());
         formData.append("name", game.name);
-        console.log(formData);
         
-
+        formData.forEach((d) => {
+            console.log(d);
+        })
+        
         const observable = this.http.post<GameModel>(appConfig.gamesURL, formData);
 
         const addedGame = await firstValueFrom(observable);

@@ -1,4 +1,4 @@
-import { GameModel } from "../2-models/game-model";
+import GameModel from "../2-models/game-model";
 import { GenreModel } from "../2-models/genre-model";
 import dal from "../4-utils/dal";
 import { OkPacket } from "mysql";
@@ -27,9 +27,11 @@ async function getGamesByGenres(genreId: number): Promise<GameModel[]>{
 }
 
 async function addGame(game: GameModel): Promise<GameModel> {
-    const sql = `INSERT INTO videogames VALUES(?,?,?,?)`;
+    console.log(game);
+    
+    const sql = `INSERT INTO videogames VALUES(DEFAULT, ?,?,?,?,?)`;
     const result: OkPacket = await dal.execute(sql, [
-        game.gameId, 
+        game.genreId,
         game.description, 
         game.releaseDate, 
         game.price, 

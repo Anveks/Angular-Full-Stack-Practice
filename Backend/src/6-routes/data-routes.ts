@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from "express";
 import dataService from "../5-services/data-service";
 import { json } from "stream/consumers";
-import { GameModel } from "../2-models/game-model";
+import GameModel from "../2-models/game-model";
 
 const router = express.Router();
 // http://localhost:4000/api/genres
@@ -41,6 +41,7 @@ router.get("/games-by-genres/:id", async (request: Request, response: Response, 
 // http://localhost:4000/api/add-game
 router.post("/games", async (request: Request, response: Response, next: NextFunction) => {
     try {
+        console.log(request.body);
         const game = new GameModel(request.body);
         const addedGame = await dataService.addGame(game);
         response.status(201).json(addedGame);
