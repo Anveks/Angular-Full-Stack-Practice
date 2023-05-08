@@ -1,7 +1,5 @@
 class AppConfig {
-    public genresURL = "http://localhost:4000/api/genres/";
-    public getGamesByGenresURL = "http://localhost:4000/api/games-by-genres/";
-    public gamesURL = "http://localhost:4000/api/games/";
+    public dataUrl = "http://localhost:4000/api/___/";
 }
 
 export const appConfig = new AppConfig();

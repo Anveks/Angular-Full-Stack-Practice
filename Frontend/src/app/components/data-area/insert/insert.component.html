@@ -1,17 +1,1 @@
-<h3>Add new game:</h3>
-
-  <form (ngSubmit)="handleSubmit()">
-
-  <select name="genreId" [(ngModel)]="game.genreId">
-    <option selected disabled>Select a genre...</option>
-    <option *ngFor="let g of genres" [value]="g.genreId">{{g.genreName}}</option>
-  </select>
-
-  <input type="text" name="description" placeholder="description" [(ngModel)]="game.description">
-  <input type="date" name="releaseDate" placeholder="release date" [(ngModel)]="game.releaseDate">
-  <input type="number" name="price" placeholder="price" [(ngModel)]="game.price">
-  <input type="text" name="name" placeholder="name" [(ngModel)]="game.name">
-
-  <button>Submit</button>
-
-</form>
+<p>insert works!</p>
