@@ -1,12 +1,12 @@
-import dal from "../4-utils/dal";
-import { OkPacket } from "mysql";
+import { CategoryModel, ICategoryModel } from "../2-models/category-model";
 
-async function getAll____() {
-
+async function getAllCategories(): Promise<ICategoryModel[]> {
+    const categories = await CategoryModel.find().exec();
+    return categories;
 }
 
 
 export default {
-    getAll____
+    getAllCategories,
 };
 

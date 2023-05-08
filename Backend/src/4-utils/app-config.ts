@@ -3,17 +3,8 @@ class AppConfig {
     // Server Port:
     public port = 4000;
 
-    // Database Host (on which computer the database exists):
-    public mySqlHost = "localhost";
-
-    // Database User
-    public mySqlUser = "root";
-
-    // Database Password: 
-    public mySqlPassword = "";
-
-    // Database Name: 
-    public mySqlDatabase = "____"; // Fill in database name
+    // mongo db conenction string:
+    public connectionString = "mongodb://127.0.0.1:27017/videogames-shop" // 127.0.0.1 this pc's address
 }
 
 const appConfig = new AppConfig();
