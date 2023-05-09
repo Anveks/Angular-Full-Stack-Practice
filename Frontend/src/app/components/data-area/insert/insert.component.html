@@ -1,19 +1,21 @@
 <h3>Add a new game: </h3>
-<form ngNativeValidate>
+<form (ngSubmit)="send()" ngNativeValidate>
 
   <label>Title: </label>
-  <input type="text" name="title" />
+  <input type="text" name="name" [(ngModel)]="game.name"/>
 
   <label>Category: </label>
-  <select name="category">
+  <select name="category" [(ngModel)]="game.category">
     <option selected disabled> Select a category... </option>
-    <!-- ng for -->
+    <option *ngFor="let c of categories" [value]="c._id">{{c.name}}</option>
   </select>
 
   <label>Price: </label>
-  <input type="number" name="price" />
+  <input type="number" name="price" [(ngModel)]="game.price"/>
 
   <label>Description: </label>
-  <input type="text" name="description">
+  <input type="text" name="description" [(ngModel)]="game.description">
+
+  <button>Submit</button>
 
 </form>

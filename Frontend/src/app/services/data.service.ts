@@ -29,6 +29,11 @@ export class DataService {
         await firstValueFrom(observable);
     }
 
+    public async addGame(game: GameModel): Promise<void>{
+        const observable = this.http.post<GameModel>(appConfig.gamesURL, game);
+        await firstValueFrom(observable);
+    }
+
     // public async getAll___(): Promise<MyModel[]> {
     //     const observable = this.http.get<MyModel[]>(appConfig.dataUrl);
     //     const data = await firstValueFrom(observable);
