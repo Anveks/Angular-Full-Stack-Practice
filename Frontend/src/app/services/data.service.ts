@@ -24,6 +24,12 @@ export class DataService {
         return games;
     }
 
+    public async getGamesBySearch(searchWord: string): Promise<GameModel[]> {
+        const observable = this.http.get<GameModel[]>(appConfig.searchURL + searchWord);
+        const games = await firstValueFrom(observable);
+        return games;
+    }
+
     public async deleteGame(id: string): Promise<void> {
         const observable = this.http.delete<GameModel>(appConfig.gamesURL + id);
         await firstValueFrom(observable);

@@ -7,8 +7,12 @@
     <option *ngFor="let category of categories" [value]="category._id">{{category.name}}</option>
   </select>
 
-  <div [style.display]="games.length > 0 ? 'block' : 'none'">
+  <label> | Or try searching a specific game: </label>
+  <input type="text" (change)="handleSearch($event.target)">
+
+  <div class="cards">
     <app-game-card *ngFor="let g of games" [game]="g" (deleteMe)="deleteThisGame($event)"></app-game-card>
+    <h3 [style.display]="games.length >= 0 ? 'none' : 'inline'"> The games will be displayed here. </h3>
   </div>
   
 </div>

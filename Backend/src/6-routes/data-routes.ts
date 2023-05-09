@@ -25,6 +25,17 @@ router.get("/games-by-categories/:_id", async (request: Request, response: Respo
     }
 });
 
+router.get("/games-search/:searchWord", async (request: Request, response: Response, next: NextFunction) => {
+    try {
+        const searchWord = request.params.searchWord;       
+        const games = await dataService.getGamesBySearch(searchWord);
+        response.json(games)
+    }
+    catch(err: any) {
+        next(err);
+    }
+});
+
 router.post("/games", async (request: Request, response: Response, next: NextFunction) => {
     try {
         const game = new GameModel(request.body);

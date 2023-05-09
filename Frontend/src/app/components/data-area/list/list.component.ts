@@ -33,6 +33,16 @@ export class ListComponent implements OnInit {
         }
     };
 
+    public async handleSearch(e: any){
+        try {
+            e.value.length === 0 
+                ? this.games = [] 
+                : this.games = await this.dataService.getGamesBySearch(e.value);
+        } catch(err: any) {
+            this.notifyService.error(err);
+        } 
+    }
+
     public async deleteThisGame(id: string) {
         try {
             await this.dataService.deleteGame(id);

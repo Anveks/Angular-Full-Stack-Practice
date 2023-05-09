@@ -16,6 +16,15 @@ async function getAllGamesByCategories(categoryId: string): Promise<IGameModel[]
     }
   }
 
+  async function getGamesBySearch(searchWord: string): Promise<IGameModel[]> {
+    try {
+      const games = await GameModel.find({ name: { $regex: searchWord, $options: "i" } }); // $regex to find matching names, $options to be case-insensitive
+      return games;
+    } catch (error) {
+      throw new Error(`Failed to retrieve games by searching ${searchWord} : ` + error);
+    }
+  }
+
 async function addNewGame(game: IGameModel): Promise<IGameModel>{
     const errors = game.validateSync()
     if (errors) throw new ValidationError(errors.message);
@@ -30,6 +39,7 @@ async function deleteGame(_id: string): Promise<void>{
 export default {
     getAllCategories,
     getAllGamesByCategories,
+    getGamesBySearch,
     addNewGame,
     deleteGame,
 };
