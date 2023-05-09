@@ -1,1 +1,14 @@
-<p>list works!</p>
+<div>
+
+  <label for="">Select a category:</label>
+
+  <select name="" (change)="handleChange($event.target)">
+    <option selected disabled> Category... </option>
+    <option *ngFor="let category of categories" [value]="category._id">{{category.name}}</option>
+  </select>
+
+  <div [style.display]="games.length > 0 ? 'block' : 'none'">
+    <app-game-card *ngFor="let g of games" [game]="g" (deleteMe)="deleteThisGame($event)"></app-game-card>
+  </div>
+  
+</div>

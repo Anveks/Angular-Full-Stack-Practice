@@ -1,0 +1,16 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+  text-align: left;
+  background-color: lightgrey;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+form > input, select {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 3px;
+}
