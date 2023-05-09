@@ -40,6 +40,7 @@ export class ListComponent implements OnInit {
                 : this.games = await this.dataService.getGamesBySearch(e.value);
         } catch(err: any) {
             this.notifyService.error(err);
+            console.log(err);
         } 
     }
 
