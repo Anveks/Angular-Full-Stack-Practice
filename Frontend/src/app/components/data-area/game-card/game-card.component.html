@@ -1,7 +1,21 @@
 <div class="card">
-  <p>Game Title: {{game.name}}</p>
-  <p>Description: {{game.description}}</p>
-  <p>Price: {{game.price | currency}}</p>
+  <p>
+    Game Title:
+    <ng-container *ngIf="editMode; else viewMode">
+      <input type="text" [(ngModel)]="game.name">
+    </ng-container>
+    <ng-template #viewMode>
+      {{ game.name }}
+    </ng-template>
+  </p>
+  <p>
+    Description: {{ game.description }}
+  </p>
+  <p>
+    Price: {{ game.price | currency }}
+  </p>
 
   <button (click)="deleteGame()">Delete</button>
+
+  <button (click)="editGame()">{{ editMode ? "Save" : "Edit" }}</button>
 </div>
