@@ -40,6 +40,12 @@ export class DataService {
         await firstValueFrom(observable);
     }
 
+    public async updateGame(game: GameModel): Promise<GameModel>{
+        const observable = this.http.put<GameModel>(appConfig.gamesURL, game);
+        const updatedGame = await firstValueFrom(observable);
+        return updatedGame;
+    }
+
     // public async getAll___(): Promise<MyModel[]> {
     //     const observable = this.http.get<MyModel[]>(appConfig.dataUrl);
     //     const data = await firstValueFrom(observable);

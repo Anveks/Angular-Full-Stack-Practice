@@ -58,5 +58,16 @@ router.delete("/games/:_id", async (request: Request, response: Response, next: 
     }
 });
 
+router.put("/games", async (request: Request, response: Response, next: NextFunction) => {
+    try {
+        const game = new GameModel(request.body);
+        const updatedGame = await dataService.updateGame(game);
+        response.json(updatedGame);
+    }
+    catch (err: any) {
+        next(err);
+    }
+});
+
 
 export default router;

@@ -36,11 +36,20 @@ async function deleteGame(_id: string): Promise<void>{
     if(!gameToDelete) throw new ResourceNotFoundError(_id);
 }
 
+async function updateGame(game: IGameModel): Promise<IGameModel> {
+  const errors = game.validateSync();
+  if(errors) throw new ValidationError(errors.message);
+  const updatedGame = await GameModel.findByIdAndUpdate(game._id, game, {returnOriginal: false}).exec();
+  if(!updatedGame) throw new ResourceNotFoundError(game._id);
+  return updatedGame;
+}
+
 export default {
     getAllCategories,
     getAllGamesByCategories,
     getGamesBySearch,
     addNewGame,
     deleteGame,
+    updateGame
 };
 

@@ -1,5 +1,7 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 import GameModel from 'src/app/models/game-model';
+import { DataService } from 'src/app/services/data.service';
+import { NotifyService } from 'src/app/services/notify.service';
 
 @Component({
   selector: 'app-game-card',
@@ -7,6 +9,11 @@ import GameModel from 'src/app/models/game-model';
   styleUrls: ['./game-card.component.css']
 })
 export class GameCardComponent {
+  public constructor(
+    private dataService: DataService, 
+    private notifyService: NotifyService
+    ) { }
+
   public editMode: boolean = false;
   public updatedGame = new GameModel();
 
@@ -20,10 +27,13 @@ export class GameCardComponent {
     this.deleteMe.emit(this.game._id);
   }
 
-  public editGame(){
-    this.editMode === false 
-      ? this.editMode = true 
-      : this.editMode = false;
-    console.log(this.editMode);
+  public async editGame(){
+    if( this.editMode === false ){
+      this.editMode = true;
+    } else {
+      this.updatedGame = { ...this.game };
+      await this.dataService.updateGame(this.updatedGame);
+      this.editMode = false;
+    }      
   }
 }

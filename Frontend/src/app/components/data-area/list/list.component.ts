@@ -18,7 +18,7 @@ export class ListComponent implements OnInit {
 
     public async ngOnInit() {
         try {
-            this.categories = await this.dataService.getAllCategories();
+            this.categories = await this.dataService.getAllCategories() 
         } catch(err: any) {
             this.notifyService.error(err);
         }
